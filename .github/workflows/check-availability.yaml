@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  integration-tests:
+  availability-checker:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Check Sites Availability
-        uses: Amplicode/connekt-github-action@v1.0.1
+        uses: Amplicode/connekt-github-action@v1.0.2
         with:
           files: |
             ./checkSitesAvailability.connekt.kts
