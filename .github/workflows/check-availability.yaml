@@ -1,3 +1,5 @@
+name: Availability Checker
+
 on:
   schedule:
     - cron: '0 * * * *'
