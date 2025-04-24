@@ -1,0 +1,27 @@
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Check Sites Availability
+        uses: Amplicode/connekt-github-action@v1.0.1
+        with:
+          files: |
+            ./checkSitesAvailability.connekt.kts
+          env_params: |
+            chatIdsParam=${{ secrets.TG_CHAT_IDS }}
+            botToken=${{ secrets.TG_BOT_TOKEN }}
+            sitesParam=${{ secrets.SITES }}
+
